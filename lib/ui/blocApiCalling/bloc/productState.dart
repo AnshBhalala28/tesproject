@@ -17,10 +17,9 @@ class ProductError extends ProductState {
 }
 
 class ProductAdding extends ProductState {}
-
 class ProductAdded extends ProductState {}
-
 class ProductAddError extends ProductState {
   final String message;
   ProductAddError(this.message);
 }
+
