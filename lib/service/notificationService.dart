@@ -4,33 +4,25 @@ class NotificationService {
   static final FlutterLocalNotificationsPlugin _notifications =
   FlutterLocalNotificationsPlugin();
 
-
   static Future<void> init() async {
-    const AndroidInitializationSettings androidSettings =
+    const AndroidInitializationSettings android =
     AndroidInitializationSettings('@mipmap/ic_launcher');
 
-    const DarwinInitializationSettings iosSettings =
-    DarwinInitializationSettings(
-      requestAlertPermission: true,
-      requestBadgePermission: true,
-      requestSoundPermission: true,
-    );
 
-    const InitializationSettings settings = InitializationSettings(
-      android: androidSettings,
-      iOS: iosSettings,
-    );
+    const DarwinInitializationSettings ios =
+    DarwinInitializationSettings();
 
+    const InitializationSettings settings =
+    InitializationSettings(android: android, iOS: ios);
 
     await _notifications.initialize(settings: settings);
   }
 
-
   static Future<void> showNotification(String title, String body) async {
     const AndroidNotificationDetails androidDetails =
     AndroidNotificationDetails(
-      'custom_sound_channel',
-      'Custom Sound Notification',
+      'channel_id',
+      'General Notification',
       importance: Importance.max,
       priority: Priority.high,
       sound: RawResourceAndroidNotificationSound('notification_sound'),
@@ -41,16 +33,14 @@ class NotificationService {
       sound: 'notification_sound.wav',
     );
 
-    const NotificationDetails notificationDetails = NotificationDetails(
-      android: androidDetails,
-      iOS: iosDetails,
-    );
+    const NotificationDetails details =
+    NotificationDetails(android: androidDetails, iOS: iosDetails);
 
     await _notifications.show(
       id: 0,
       title: title,
       body: body,
-      notificationDetails: notificationDetails,
+      notificationDetails: details,
     );
   }
 }
