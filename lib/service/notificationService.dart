@@ -21,9 +21,8 @@ class NotificationService {
       iOS: iosSettings,
     );
 
-    await _notifications.initialize(
-      settings: settings,
-    );
+
+    await _notifications.initialize(settings: settings);
   }
 
 
@@ -39,7 +38,7 @@ class NotificationService {
 
     const DarwinNotificationDetails iosDetails =
     DarwinNotificationDetails(
-      sound: 'notification_sound.wav', // iOS mate
+      sound: 'notification_sound.wav',
     );
 
     const NotificationDetails notificationDetails = NotificationDetails(
@@ -47,12 +46,11 @@ class NotificationService {
       iOS: iosDetails,
     );
 
-
     await _notifications.show(
-      id: 0, // ✅ REQUIRED
+      id: 0,
       title: title,
       body: body,
-      notificationDetails: notificationDetails, // ✅ FIXED
+      notificationDetails: notificationDetails,
     );
   }
 }
