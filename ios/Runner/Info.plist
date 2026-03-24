@@ -26,6 +26,8 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSUserNotificationUsageDescription</key>
+    <string>This app needs notification access to send alerts</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
     <false/>
     <key>UIBackgroundModes</key>
