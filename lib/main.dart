@@ -13,12 +13,12 @@ import 'firebase_options.dart';
 
 // 🔔 Plugin
 
-Future<void> _firebaseBackgroundHandler(RemoteMessage message) async {
-  await NotificationService.showNotification(
-    message.notification?.title ?? "No Title",
-    message.notification?.body ?? "No Body",
-  );
-}
+// Future<void> _firebaseBackgroundHandler(RemoteMessage message) async {
+//   await NotificationService.showNotification(
+//     message.notification?.title ?? "No Title",
+//     message.notification?.body ?? "No Body",
+//   );
+// }
 Future<void> getToken() async {
   String? token = await FirebaseMessaging.instance.getToken();
   log("FCM TOKEN ==> $token");
@@ -32,7 +32,7 @@ void main() async {
   );
 
   await NotificationService.init();
-  FirebaseMessaging.onBackgroundMessage(_firebaseBackgroundHandler);
+  // FirebaseMessaging.onBackgroundMessage(_firebaseBackgroundHandler);
 
   await Hive.initFlutter();
   await Hive.openBox('cart');
